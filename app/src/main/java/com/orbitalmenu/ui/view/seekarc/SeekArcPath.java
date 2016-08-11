@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 
-public class SeekArcView extends View {
+public class SeekArcPath extends View {
 
     private Paint mPaint;
     private Path mPath;
@@ -22,17 +22,17 @@ public class SeekArcView extends View {
 
 
     // TODO: 11.08.2016 delet unuse constructors
-    public SeekArcView(Context context){
+    public SeekArcPath(Context context){
         super(context);
         init();
     }
 
-    public SeekArcView(Context context, AttributeSet attrs) {
+    public SeekArcPath(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public SeekArcView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SeekArcPath(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }

@@ -10,8 +10,8 @@
     android:fitsSystemWindows="true">
 
 
-    <com.orbitalmenu.ui.view.orbit.OrbitView
-        android:id="@+id/seek_bar1"
+<!--    <com.orbitalmenu.ui.view.orbit.OrbitView
+        android:id="@+id/orbit1"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="40dp">
@@ -23,23 +23,37 @@
         <com.orbitalmenu.ui.view.orbit.OrbitScroller
             android:layout_width="20dp"
             android:layout_height="100dp" />
-    </com.orbitalmenu.ui.view.orbit.OrbitView>
+    </com.orbitalmenu.ui.view.orbit.OrbitView>-->
 
 
-    <com.orbitalmenu.ui.view.orbit.OrbitView
-        android:id="@+id/seek_bar2"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="40dp"
-        android:layout_below="@+id/seek_bar1">
+        android:layout_height="wrap_content">
 
-        <com.orbitalmenu.ui.view.orbit.OrbitPath
+        <com.orbitalmenu.ui.view.orbits.OrbitViewTop
+            android:id="@+id/orbit1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"/>
 
-        <com.orbitalmenu.ui.view.orbit.OrbitScroller
-            android:layout_width="20dp"
-            android:layout_height="100dp" />
-    </com.orbitalmenu.ui.view.orbit.OrbitView>
+        <com.orbitalmenu.ui.view.orbits.OrbitViewTopDouble
+            android:id="@+id/orbit2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <com.orbitalmenu.ui.view.orbits.OrbitViewMid
+            android:id="@+id/orbit3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <com.orbitalmenu.ui.view.orbits.OrbitViewBot
+            android:id="@+id/orbit4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </FrameLayout>
+
+
+
+
 
 </RelativeLayout>

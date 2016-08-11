@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="backgroundColor">#10bdb6</color>
+    <color name="scrollerColor">#eaf3f5</color>
 </resources>

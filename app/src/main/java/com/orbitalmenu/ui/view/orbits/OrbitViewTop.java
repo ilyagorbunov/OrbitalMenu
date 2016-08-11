@@ -11,6 +11,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Scroller;
 
+import com.orbitalmenu.R;
+
 import java.math.BigDecimal;
 
 public class OrbitViewTop extends View {
@@ -28,6 +30,8 @@ public class OrbitViewTop extends View {
     private int mLeft;
     private float currentX; // current coordinates
     private int currentSegment; // current segment
+    private String mItemName;
+    private int mFontSize;
 
     private final static float RADIUS = 160f; // Scroller radius
     private final static float SEGMENT = 20f; // Path segments
@@ -55,6 +59,8 @@ public class OrbitViewTop extends View {
         mPointFend = new PointF();
         circleCenter = new PointF();
         mScroller = new Scroller(context);
+        mFontSize = 42;
+        mItemName = context.getString(R.string.item1);
     }
 
     @Override
@@ -97,10 +103,22 @@ public class OrbitViewTop extends View {
         float y = (1 - t) * (1 - t) * mPointFstart.y + 2 * (t) * (1 - t) * mPointFset.y + t * t * mPointFend.y;
         circleCenter.set(x, y);
         mPaint.reset();
-        mPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
-        mPaint.setColor(Color.WHITE);
+        mPaint.setAntiAlias(true);
+        mPaint.setDither(true);
         mPaint.setStyle(Paint.Style.FILL);
+        mPaint.setColor(Color.WHITE);
         canvas.drawCircle(x, y, RADIUS, mPaint);
+        mPaint.reset();
+        mPaint.setAntiAlias(true);
+        mPaint.setDither(true);
+        mPaint.setStyle(Paint.Style.FILL);
+        mPaint.setColor(Color.WHITE);
+        mPaint.setAlpha(100);
+        canvas.drawCircle(x, y, RADIUS + RADIUS*0.15f, mPaint);
+        mPaint.reset();
+        mPaint.setColor(Color.WHITE);
+        mPaint.setTextSize(mFontSize);
+        canvas.drawText(mItemName, x * 0.8f, y + RADIUS*1.4f, mPaint);
     }
 
     @Override

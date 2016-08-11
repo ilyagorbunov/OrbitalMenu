@@ -11,6 +11,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Scroller;
 
+import com.orbitalmenu.R;
+
 import java.math.BigDecimal;
 
 public class OrbitViewMid extends View {
@@ -26,8 +28,10 @@ public class OrbitViewMid extends View {
     private int mRight;
     private int mBottom;
     private int mLeft;
-    private float currentX; // current coordinates
-    private int currentSegment; // current segment
+    private float mCurrentX; // current coordinates
+    private int mCurrentSegment; // current
+    private String mItemName;
+    private int mFontSize;
 
     private final static float RADIUS = 230f; // Scroller radius
     private final static float SEGMENT = 20f; // Path segments
@@ -55,12 +59,14 @@ public class OrbitViewMid extends View {
         mPointFend = new PointF();
         circleCenter = new PointF();
         mScroller = new Scroller(context);
+        mFontSize = 42;
+        mItemName = context.getString(R.string.item4);
     }
 
     @Override
     public void computeScroll() {
         if (mScroller.computeScrollOffset()) {
-            currentX = mScroller.getCurrX();
+            mCurrentX = mScroller.getCurrX();
             postInvalidate();
         }
     }
@@ -75,8 +81,8 @@ public class OrbitViewMid extends View {
         mPointFstart.set((right - left) / 3, bottom);
         mPointFset.set((right - left) / 4, (bottom - top) / 2);
         mPointFend.set(right, (bottom - top) * 3 / 7);
-        currentX = (right - left) * 12 / SEGMENT;
-        currentSegment = 1;
+        mCurrentX = (right - left) * 12 / SEGMENT;
+        mCurrentSegment = 1;
     }
 
     @Override
@@ -92,15 +98,27 @@ public class OrbitViewMid extends View {
         canvas.drawPath(mPath, mPaint);
 
         // Take x-coordinate, calculate coordinates center, draw path
-        float t = (currentX / (mRight - mLeft));
+        float t = (mCurrentX / (mRight - mLeft));
         float x = (1 - t) * (1 - t) * mPointFstart.x + 2 * (t) * (1 - t) * mPointFset.x + t * t * mPointFend.x;
         float y = (1 - t) * (1 - t) * mPointFstart.y + 2 * (t) * (1 - t) * mPointFset.y + t * t * mPointFend.y;
         circleCenter.set(x, y);
         mPaint.reset();
-        mPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
-        mPaint.setColor(Color.WHITE);
+        mPaint.setAntiAlias(true);
+        mPaint.setDither(true);
         mPaint.setStyle(Paint.Style.FILL);
+        mPaint.setColor(Color.WHITE);
         canvas.drawCircle(x, y, RADIUS, mPaint);
+        mPaint.reset();
+        mPaint.setAntiAlias(true);
+        mPaint.setDither(true);
+        mPaint.setStyle(Paint.Style.FILL);
+        mPaint.setColor(Color.WHITE);
+        mPaint.setAlpha(100);
+        canvas.drawCircle(x, y, RADIUS + RADIUS*0.15f, mPaint);
+        mPaint.reset();
+        mPaint.setColor(Color.WHITE);
+        mPaint.setTextSize(mFontSize);
+        canvas.drawText(mItemName, x * 0.9f, y + RADIUS*1.3f, mPaint);
     }
 
     @Override
@@ -114,13 +132,13 @@ public class OrbitViewMid extends View {
                 return !(distance - (RADIUS + 20) * (RADIUS + 20) > 0);
             case MotionEvent.ACTION_MOVE:
                 float moveX = event.getX();
-                currentX = moveX; // Set x-coordinate for scroller
+                mCurrentX = moveX; // Set x-coordinate for scroller
                 invalidate();
-                currentSegment = getSegment(moveX);
+                mCurrentSegment = getSegment(moveX);
                 break;
             default:
                 // auto-scrolling
-                mScroller.startScroll((int) currentX, 0, (int) ((mRight - mLeft) / SEGMENT * currentSegment - currentX), 0, 200);
+                mScroller.startScroll((int) mCurrentX, 0, (int) ((mRight - mLeft) / SEGMENT * mCurrentSegment - mCurrentX), 0, 200);
                 postInvalidate();
                 break;
         }

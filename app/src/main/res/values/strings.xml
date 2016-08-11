@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">OrbitalMenu</string>
+
+    <!--Menu Items-->
+    <string name="item1">ITEM #1</string>
+    <string name="item2">ITEM #2</string>
+    <string name="item4">ITEM #4</string>
+    <string name="item6">ITEM #6</string>
+
 </resources>

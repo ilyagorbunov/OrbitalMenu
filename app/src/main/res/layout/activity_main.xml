@@ -9,23 +9,6 @@
     android:background="@color/backgroundColor"
     android:fitsSystemWindows="true">
 
-
-<!--    <com.orbitalmenu.ui.view.orbit.OrbitView
-        android:id="@+id/orbit1"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="40dp">
-
-        <com.orbitalmenu.ui.view.orbit.OrbitPath
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <com.orbitalmenu.ui.view.orbit.OrbitScroller
-            android:layout_width="20dp"
-            android:layout_height="100dp" />
-    </com.orbitalmenu.ui.view.orbit.OrbitView>-->
-
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -51,9 +34,5 @@
             android:layout_height="match_parent"/>
 
     </FrameLayout>
-
-
-
-
 
 </RelativeLayout>

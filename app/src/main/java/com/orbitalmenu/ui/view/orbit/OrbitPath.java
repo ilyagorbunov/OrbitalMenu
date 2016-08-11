@@ -1,17 +1,16 @@
-package com.orbitalmenu.ui.view.seekarc;
+package com.orbitalmenu.ui.view.orbit;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Point;
 import android.graphics.PointF;
 import android.util.AttributeSet;
 import android.view.View;
 
 
-public class SeekArcPath extends View {
+public class OrbitPath extends View {
 
     private Paint mPaint;
     private Path mPath;
@@ -22,17 +21,17 @@ public class SeekArcPath extends View {
 
 
     // TODO: 11.08.2016 delet unuse constructors
-    public SeekArcPath(Context context){
+    public OrbitPath(Context context){
         super(context);
         init();
     }
 
-    public SeekArcPath(Context context, AttributeSet attrs) {
+    public OrbitPath(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public SeekArcPath(Context context, AttributeSet attrs, int defStyleAttr) {
+    public OrbitPath(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }

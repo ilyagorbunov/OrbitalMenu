@@ -1,4 +1,4 @@
-package com.orbitalmenu.ui.view.seekarc;
+package com.orbitalmenu.ui.view.orbit;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -7,14 +7,14 @@ import android.graphics.Paint;
 import android.view.View;
 import android.widget.Scroller;
 
-public class SeekArcScroller extends View{
+public class OrbitScroller extends View{
 
     private Paint mPaint;
     private Scroller mScroller;
     private OnSmoothScrollListener mListener;
 
 
-    public SeekArcScroller(Context context) {
+    public OrbitScroller(Context context) {
         super(context);
     }
 
@@ -58,7 +58,7 @@ public class SeekArcScroller extends View{
      * @param start
      * @param distance
      */
-    public void smoothScrollLevel(int start, int distance) {
+    public void smoothScrollSegment(int start, int distance) {
         mScroller.startScroll(start, 0, distance, 0, 200);
         postInvalidate();
     }

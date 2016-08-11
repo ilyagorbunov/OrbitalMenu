@@ -8,9 +8,7 @@ import android.widget.FrameLayout;
 
 import java.math.BigDecimal;
 
-/**
- * Created by Davey on 11.08.2016.
- */
+
 public class OrbitView extends FrameLayout implements OrbitScroller.OnSmoothScrollListener{
 
     private PointF mPointFstart;
@@ -22,14 +20,13 @@ public class OrbitView extends FrameLayout implements OrbitScroller.OnSmoothScro
     private int mBottom;
     private int mLeft;
     private float currentX; // current scroller coordinates
-    private final static float LEVEL = 6f;
+    private final static float SEGMENT = 6f;
     private int currentSegment = 1;
 
     private OnProgressChangedListener mListener;
 
     private OrbitScroller mOrbitScroller;
 
-    // TODO: 11.08.2016 delet unuse constructors
     public OrbitView(Context context) {
         super(context);
         init();
@@ -44,6 +41,7 @@ public class OrbitView extends FrameLayout implements OrbitScroller.OnSmoothScro
         super(context, attrs, defStyleAttr);
         init();
     }
+
 
     private void init() {
         mPointFstart = new PointF();
@@ -73,7 +71,7 @@ public class OrbitView extends FrameLayout implements OrbitScroller.OnSmoothScro
         mPointFstart.set(0, bottom - top - 30);
         mPointFset.set((right - left) / 2, -(bottom - top) / 4);
         mPointFend.set(right, bottom - top - 30);
-        currentX = (right - left) / LEVEL;
+        currentX = (right - left) / SEGMENT;
         changeScrollerLayout(currentX);
     }
 
@@ -96,7 +94,7 @@ public class OrbitView extends FrameLayout implements OrbitScroller.OnSmoothScro
                 }
                 break;
             default:
-                mOrbitScroller.smoothScrollSegment((int) currentX, (int) ((mRight - mLeft) / LEVEL * currentSegment - currentX));
+                mOrbitScroller.smoothScrollSegment((int) currentX, (int) ((mRight - mLeft) / SEGMENT * currentSegment - currentX));
                 break;
         }
         return super.onTouchEvent(event);
@@ -122,12 +120,12 @@ public class OrbitView extends FrameLayout implements OrbitScroller.OnSmoothScro
      * @return segment
      */
     private int getSegment(float x) {
-        float ratio = (x / (mRight - mLeft)) * LEVEL;
+        float ratio = (x / (mRight - mLeft)) * SEGMENT;
         int result = new BigDecimal(ratio).setScale(0, BigDecimal.ROUND_HALF_UP).intValue();
         if (result < 1) {
             result = 1;
-        } else if (result > (LEVEL - 1)) {
-            result = (int) (LEVEL - 1);
+        } else if (result > (SEGMENT - 1)) {
+            result = (int) (SEGMENT - 1);
         }
         return result;
     }

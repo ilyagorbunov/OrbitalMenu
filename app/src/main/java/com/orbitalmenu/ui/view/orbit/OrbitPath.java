@@ -20,7 +20,6 @@ public class OrbitPath extends View {
     private PointF mPointFend; //ent point
 
 
-    // TODO: 11.08.2016 delet unuse constructors
     public OrbitPath(Context context){
         super(context);
         init();
@@ -35,6 +34,7 @@ public class OrbitPath extends View {
         super(context, attrs, defStyleAttr);
         init();
     }
+
 
     private void init() {
         mPaint = new Paint();

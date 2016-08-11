@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Scroller;
 
@@ -16,6 +17,17 @@ public class OrbitScroller extends View{
 
     public OrbitScroller(Context context) {
         super(context);
+        init(context);
+    }
+
+    public OrbitScroller(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context);
+    }
+
+    public OrbitScroller(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(context);
     }
 
     private void init(Context context) {
@@ -55,8 +67,8 @@ public class OrbitScroller extends View{
 
     /**
      * Auto-scrolling
-     * @param start
-     * @param distance
+     * @param start sdf
+     * @param distance sdf
      */
     public void smoothScrollSegment(int start, int distance) {
         mScroller.startScroll(start, 0, distance, 0, 200);

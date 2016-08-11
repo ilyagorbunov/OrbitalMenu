@@ -15,6 +15,9 @@ import com.orbitalmenu.R;
 
 import java.math.BigDecimal;
 
+/**
+ * Class create one orbita with scroller
+ */
 public class OrbitViewBot extends View {
 
     private Scroller mScroller;
